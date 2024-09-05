@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haaretz to TheMarker Link Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        #result {
+            margin-top: 20px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>Haaretz to TheMarker Link Converter</h1>
+    <input type="text" id="haaretzLink" placeholder="Enter Haaretz link">
+    <button onclick="convertLink()">Convert</button>
+    <div id="result"></div>
+
+    <script>
+        function convertLink() {
+            const haaretzLink = document.getElementById('haaretzLink').value;
+            const resultDiv = document.getElementById('result');
+
+            if (haaretzLink.includes('haaretz.co.il')) {
+                const themarkerLink = haaretzLink.replace('haaretz.co.il', 'themarker.com');
+                resultDiv.innerHTML = `
+                    <p>Converted link:</p>
+                    <a href="${themarkerLink}" target="_blank">${themarkerLink}</a>
+                `;
+            } else {
+                resultDiv.innerHTML = '<p>Please enter a valid Haaretz link.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
